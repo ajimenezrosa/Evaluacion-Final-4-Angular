@@ -1,0 +1,19 @@
+.row-login{
+  background: url('assets/images/background/login-fondo.jpg') center;
+  height: 100vh;
+}
+
+.contenedor-form{
+  display: table;
+  height: 100vh;
+  margin: auto;
+}
+.form-signin{
+  display: table-cell;
+  vertical-align: middle;
+  width: 40%;
+  color: #fff;
+}
+.title{
+  font-size: 14pt;
+}
