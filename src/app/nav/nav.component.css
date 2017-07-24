@@ -9,3 +9,14 @@
   margin-top: 9px;
   border-radius: 5px;
 }
+.container-navbar{
+  padding: 0;
+}
+.nav-xs{
+  margin-top: 15px;
+  text-align: right;
+}
+.nav-xs a{
+  color: #777;
+  margin:10px;
+}

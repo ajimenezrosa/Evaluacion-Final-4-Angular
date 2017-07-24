@@ -3,6 +3,25 @@
   background-size: 100%;
   height: 100vh;
 }
-.badge-compras{
-
+.row-productos{
+  background-color: #f8f8f8;
+  min-height: 200px;
+  border-radius: 3px;
+}
+.title-header{
+  border-bottom: 1px solid red;
+}
+.input-sm{
+  height: 23px;
+  padding: 0px 5px;
+  font-size: 12px;
+}
+.image-producto{
+  width: 100%;
+  height: 170px;
+  border: 1px solid #ddd;
+}
+.thumbnail .caption h3{
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
