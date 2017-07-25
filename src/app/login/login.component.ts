@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NavigationExtras } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -15,14 +16,14 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   user: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute) {
     this.user = afAuth.authState;
   }
 
   ngOnInit() {
     this.afAuth.auth.onAuthStateChanged(function(user){
       if (user) {
-        console.log("Ya inicio Sesion");
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
       }
     });
     this.loginForm = new FormGroup({
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.afAuth.auth.signInWithEmailAndPassword(this.loginForm.get('email').value, this.loginForm.get('password').value).then(function(user){
-      console.log('Hola Mundoooooooo');
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }, function(error) {
       console.log("Sign In Error", error);
     });
