@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavComponent } from '../nav/nav.component';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
+
 @Component({
   selector: 'app-home, body',
   templateUrl: './home.component.html',
