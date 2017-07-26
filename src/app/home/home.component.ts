@@ -9,7 +9,9 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   items: FirebaseListObservable<any[]>;
+
   constructor(db: AngularFireDatabase) {
     this.items = db.list('/productos');
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs/Rx';
@@ -10,9 +10,17 @@ import {Observable} from 'rxjs/Rx';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+
   user: Observable<firebase.User>;
-  constructor(public afAuth: AngularFireAuth) {
+  returnUrl: string;
+
+  constructor(private afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute) {
     this.user = afAuth.authState;
+    this.afAuth.auth.onAuthStateChanged(function(user){
+      if (!user) {
+        router.navigateByUrl('/login');
+      }
+    });
   }
 
   isIn = false;
@@ -22,10 +30,13 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
   logout() {
     this.afAuth.auth.signOut();
+    this.router.navigateByUrl('/home');
   }
 
 }
