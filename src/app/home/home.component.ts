@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavComponent } from '../nav/nav.component';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { FilterPipe } from '../filter.pipe';
 
 
 @Component({
