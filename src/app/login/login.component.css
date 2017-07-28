@@ -14,6 +14,5 @@
   width: 40%;
   color: #fff;
 }
-.title{
-  font-size: 14pt;
-}
+.title{font-size: 14pt;}
+.text-error{color:red; text-shadow: 1px 1px 3px #000; }

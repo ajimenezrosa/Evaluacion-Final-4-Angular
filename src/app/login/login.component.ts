@@ -11,27 +11,19 @@ import {Observable} from 'rxjs/Rx';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   loginForm: FormGroup;
   user: Observable<firebase.User>;
   returnUrl: string;
-  
+  showClass: boolean = true;
+
   constructor(public afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute) {
     this.user = afAuth.authState;
+    this.showClass = true;
     this.afAuth.auth.onAuthStateChanged(function(user){
       if (user) {
         router.navigateByUrl('/home');
       }
     });
-  }
-
-  ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    console.log
-    this.loginForm = new FormGroup({
-      'email': new FormControl('', Validators.required),
-      'password': new FormControl('', Validators.required)
-    })
   }
 
   login(){
@@ -40,6 +32,15 @@ export class LoginComponent implements OnInit {
     }, function(error) {
       console.log("Error Login: ", error);
     });
-
+    this.showClass = false;
   }
+
+  ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.loginForm = new FormGroup({
+      'email': new FormControl('', Validators.required),
+      'password': new FormControl('', Validators.required)
+    })
+  }
+
 }

@@ -19,4 +19,8 @@
 .nav-xs a{
   color: #777;
   margin:10px;
+  cursor: pointer;
+}
+.nav li a{
+  cursor: pointer;
 }

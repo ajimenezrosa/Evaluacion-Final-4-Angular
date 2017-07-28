@@ -2,20 +2,22 @@
   <div class="contenedor-form">
     <div class="form-sigin">
       <p class="title">Inicia Sesión</p>
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <form [formGroup]="loginForm" ngNativeValidate (ngSubmit)="login()">
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" formControlName="email" id="Email" required>
+          <label>Email address</label>
+          <input type="email" class="form-control" id="Email" formControlName="email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" formControlName="password" id="Password" required>
+          <label>Password</label>
+          <input type="password" class="form-control" id="Password" formControlName="password" required>
+        </div>
+        <div class="form-group">
+          <label [ngClass]="{'text-error': true, 'hidden': showClass}">Error en el inicio de sesión.</label>
         </div>
         <div class="form-group text-center">
           <button type="submit" class="btn btn-success">Ingresar</button>
         </div>
       </form>
-      <a [routerLink]="['/home']">prueba</a>
     </div>
   </div>
 </div>
