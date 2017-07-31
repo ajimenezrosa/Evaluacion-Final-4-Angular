@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavComponent } from './nav/nav.component';
+import { CompraService } from './compra.service';
 
 @Component({
   selector: 'app-root',

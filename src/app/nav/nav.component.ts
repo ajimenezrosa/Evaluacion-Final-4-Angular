@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs/Rx';
+import { CompraService } from '../compra.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,8 +14,10 @@ export class NavComponent implements OnInit {
 
   user: Observable<firebase.User>;
   returnUrl: string;
+  productos : Object[];
+  isValid: boolean = false;
 
-  constructor(private afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute, private compraService: CompraService) {
     this.user = afAuth.authState;
     this.afAuth.auth.onAuthStateChanged(function(user){
       if (!user) {
@@ -31,7 +34,11 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.productos = this.compraService.carrito;
 
+    if(this.compraService.carrito.length>0){
+      this.isValid=true;
+    }
   }
 
   logout() {

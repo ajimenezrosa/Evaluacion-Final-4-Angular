@@ -26,9 +26,9 @@
                   <strong>Unidades Disponibles:</strong> {{item.unidades}}
                 </p>
                 <div class="row">
-                  <div class="col-xs-5"><a href="#" class="btn btn-primary btn-xs" role="button">Ver más</a></div>
-                  <div class="col-xs-3"><a href="#" class="btn btn-warning btn-xs" role="button">Añadir</a></div>
-                  <div class="col-xs-4"><input class="form-control input-sm" type="number" ng-minlength="0" ng-maxlength="20" value="1"></div>
+                  <div class="col-xs-5"><a (click)="modalProducto(item.nombre, item.valor, item.unidades, item.imagen)" class="btn btn-primary btn-xs" role="button">Ver más</a></div>
+                  <div class="col-xs-3"><a (click)="addCarrito(item.$key, item.nombre, item.valor, item.imagen)" class="btn btn-warning btn-xs" role="button">Añadir</a></div>
+                  <div class="col-xs-4"><input class="form-control input-sm" [(ngModel)]="inputCantidad[item.$key]" type="number" ng-minlength="0" ng-maxlength="20" value="0"></div>
                 </div>
               </div>
           </div>

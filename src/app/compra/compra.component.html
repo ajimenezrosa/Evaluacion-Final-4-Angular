@@ -1,0 +1,22 @@
+<div class="row-principal">
+  <app-nav></app-nav>
+  <div class="container">
+    <div class="row row-productos">
+      <div cass="title-header">
+        <div class="col-md-9 col-xs-6">
+          <h2>Carrito de compras</h2>
+          <hr>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <ul>
+          <li *ngFor="let item of productos">
+            {{item.nombre}} - {{item.cantidad}}
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+      </div>
+    </div>
+  </div>
+</div>
