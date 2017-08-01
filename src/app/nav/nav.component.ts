@@ -15,7 +15,6 @@ export class NavComponent implements OnInit {
   user: Observable<firebase.User>;
   returnUrl: string;
   productos : Object[];
-  isValid: boolean = false;
 
   constructor(private afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute, private compraService: CompraService) {
     this.user = afAuth.authState;
@@ -35,9 +34,17 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.productos = this.compraService.carrito;
+    if(this.productos.length<1){
+      this.router.navigateByUrl('/home');
+    }
 
+  }
+
+  isValid(){
     if(this.compraService.carrito.length>0){
-      this.isValid=true;
+      return true;
+    }else{
+      return false;
     }
   }
 

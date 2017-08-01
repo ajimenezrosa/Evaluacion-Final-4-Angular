@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.items.subscribe(items => items.forEach(item => this.inputCantidad.push('0') ));
-    console.log(this.inputCantidad);
   }
 
   modalProducto(nombre, valor, unidades, imagen) {
@@ -46,7 +45,7 @@ export class HomeComponent implements OnInit {
 
   addCarrito(keyP, nombreP, valorP, imagenP){
     if(this.inputCantidad[keyP]!="0"){
-      this.compraService.carrito.push({key: keyP, nombre: nombreP, valor: valorP, cantidad: this.inputCantidad[keyP], image: imagenP},)
+      this.compraService.carrito.push({key: keyP, nombre: nombreP, valor: valorP, cantidad: this.inputCantidad[keyP], imagen: imagenP},)
     }
 
   }

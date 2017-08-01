@@ -9,14 +9,23 @@ import { CompraService } from '../compra.service'
 })
 export class CompraComponent implements OnInit {
 
-  productos : Object[];
+  productos : Array<any>;
+  total: number = 0;
 
   constructor(private compraService: CompraService) {
 
+    this.productos = this.compraService.carrito;
   }
 
   ngOnInit() {
-    this.productos = this.compraService.carrito;
+    this.calculateTotals()
+  }
+
+  calculateTotals() {
+    for(let data of this.productos) {
+      this.total += data.cantidad * data.valor;
+    }
+
   }
 
 }

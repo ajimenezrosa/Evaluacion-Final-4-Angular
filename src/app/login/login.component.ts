@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   user: Observable<firebase.User>;
   returnUrl: string;
   showClass: boolean = true;
+  msg: string;
 
   constructor(public afAuth: AngularFireAuth, private router: Router, private route: ActivatedRoute) {
     this.user = afAuth.authState;
@@ -27,12 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.afAuth.auth.signInWithEmailAndPassword(this.loginForm.get('email').value, this.loginForm.get('password').value).then(function(user){
-      this.router.navigateByUrl('/home');
-    }, function(error) {
-      console.log("Error Login: ", error);
-    });
-    this.showClass = false;
+    this.afAuth.auth.signInWithEmailAndPassword(this.loginForm.get('email').value, this.loginForm.get('password').value)
+    .then(resolve => this.router.navigateByUrl('/home'))
+    .catch(error => this.msg = error.message);
   }
 
   ngOnInit() {
