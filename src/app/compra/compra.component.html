@@ -26,7 +26,7 @@
         <div class="col-sm-6">
           <h2><strong>Total: </strong> ${{total}}</h2>
           <button class="btn btn-default" [routerLink]="['../home']">Cancelar</button>
-          <button class="btn btn-default">Pagar</button>
+          <button class="btn btn-default" (click)="btnPagar()">Pagar</button>
         </div>
       </div>
     </div>
